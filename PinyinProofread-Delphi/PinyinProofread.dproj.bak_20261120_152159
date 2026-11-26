@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{8A7E4B21-5C3D-4E6F-9A12-7B8C9D0E1F23}</ProjectGuid>
+    <ProjectVersion>19.0</ProjectVersion>
+    <MainSource>PinyinProofread.dpr</MainSource>
+    <Base>True</Base>
+    <Config Condition="'$(Config)'==''">Release</Config>
+    <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    <TargetedPlatforms>1</TargetedPlatforms>
+    <AppType>Application</AppType>
+    <FrameworkType>VCL</FrameworkType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or "'$(Base)'!=''">
+    <DCC_DcuOutput>.\dcu\$(Platform)\$(Config)</DCC_DcuOutput>
+    <DCC_ExeOutput>.\</DCC_ExeOutput>
+    <DCC_UnitSearchPath>src</DCC_UnitSearchPath>
+    <DCC_Y>True</DCC_Y>
+    <DCC_RangeChecking>False</DCC_RangeChecking>
+    <DCC_Optimize>True</DCC_Optimize>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_W>True</DCC_W>
+    <DCC_H>True</DCC_H>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release'">
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug'">
+    <DCC_Define>DEBUG</DCC_Define>
+    <DCC_DebugInformation>True</DCC_DebugInformation>
+    <DCC_Optimize>False</DCC_Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <DelphiCompile Include="PinyinProofread.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="src\uMain.pas"/>
+    <DCCReference Include="src\uState.pas"/>
+    <DCCReference Include="src\uRecord.pas"/>
+    <DCCReference Include="src\uFileProcessor.pas"/>
+    <DCCReference Include="src\uAudio.pas"/>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.ProjectType>VCL Application</Borland.ProjectType>
+    <BorlandProject>
+      <Delphi.Personality>
+        <VersionInfo>
+          <VersionInfoKeys>
+            <CompanyName></CompanyName>
+            <FileDescription>HTML拼音校对工具（Delphi 12.2 移植版）</FileDescription>
+            <FileVersion>1.0.0.0</FileVersion>
+            <InternalName>PinyinProofread</InternalName>
+            <LegalCopyright></LegalCopyright>
+            <OriginalFilename>PinyinProofread.exe</OriginalFilename>
+            <ProductName>PinyinProofread</ProductName>
+            <ProductVersion>1.0.0.0</ProductVersion>
+          </VersionInfoKeys>
+        </VersionInfo>
+      </Delphi.Personality>
+    </BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+  <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+  <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>
